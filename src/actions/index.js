@@ -19,9 +19,11 @@ export const changePath = (path) => {
     }
 }
 
-export const search = (city) => {
+export const search = (response) => {
     return {
         type: 'search',
-        city
+        city: response.city,
+        oneDayForecast: response.oneDayForcast,
+        fiveDayForecast: response.fiveDayForecast
     }
 }

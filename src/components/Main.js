@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
-import { Form, FormControl, Button, Container, Row, Col, InputGroup } from 'react-bootstrap';
+import { Form, FormControl, Container, Row, Col } from 'react-bootstrap';
+import Search from './Search';
+import Forecast from './Forecast';
 export class Main extends Component {
     render() {
         return (
-            <Container fluid={true}>
-                <Row className="d-flex justify-content-center">
-                    <Col xs={12} md={6} xl={4}>
-                        <Form className="my-5">
-                            <FormControl type="text" placeholder="Search Location" onSubmit={() => { }} />
-                        </Form>
-                    </Col>
-                </Row>
-                
-            </Container>
+            // Search Field
+                <Container fluid={true}>
+                    <Search />
+                    {/* Weather Cast */}
+                    <Forecast />
+                </Container>
                 )
             }
         }

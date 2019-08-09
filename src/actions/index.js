@@ -18,3 +18,10 @@ export const changePath = (path) => {
         path
     }
 }
+
+export const search = (city) => {
+    return {
+        type: 'search',
+        city
+    }
+}

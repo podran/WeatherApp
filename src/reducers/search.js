@@ -1,3 +1,20 @@
+const defaultCity = JSON.parse(`[
+    {
+      "Version": 1,
+      "Key": "215854",
+      "Type": "City",
+      "Rank": 31,
+      "LocalizedName": "Tel Aviv",
+      "Country": {
+        "ID": "IL",
+        "LocalizedName": "Israel"
+      },
+      "AdministrativeArea": {
+        "ID": "TA",
+        "LocalizedName": "Tel Aviv"
+      }
+    }]`);
+
 const oneDayForecast = JSON.parse(`{
     "Headline": {
       "EffectiveDate": "2019-08-10T08:00:00-07:00",
@@ -51,7 +68,7 @@ const oneDayForecast = JSON.parse(`{
 const searchReducer = (state = {
     oneDayForecast: oneDayForecast,
     fiveDayForecast: [],
-    city: {}
+    city: defaultCity
 }, action) => {
     switch(action.type){
         case 'search':

@@ -1,7 +1,7 @@
 import React from 'react';
 import lifecycle from 'react-pure-lifecycle';
 import { Col, Row } from 'react-bootstrap';
- import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 
 

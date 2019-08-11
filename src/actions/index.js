@@ -27,3 +27,17 @@ export const search = (response) => {
         fiveDayForecast: response.fiveDayForecast
     }
 }
+
+export const searchResults = (results) => {
+    return {
+        type: 'menu',
+        searchResults: results
+    }
+}
+
+export const selectedResult = (selectedResult) => {
+    return {
+        type: 'selected',
+        selectedResult
+    }
+}

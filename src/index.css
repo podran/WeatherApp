@@ -13,3 +13,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.resultItem{
+  color: red;
+}
+
+.results {
+  position: absolute;
+  max-height: 150px;
+  width: 100%;
+  z-index: 2;
+  color: red;
+  overflow: auto;
+  padding: 0 15px 0 0;
+  background-color: white;
+}
+
+.myCol {
+  padding: 0
+}

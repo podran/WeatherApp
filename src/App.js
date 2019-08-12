@@ -4,7 +4,8 @@ import Main from './components/Main';
 import { BrowserRouter, Router, Route, Link } from "react-router-dom";
 import Fav from './components/Fav';
 import {Navbar, Nav} from 'react-bootstrap';
-import history from './components/history'
+import history from './components/history';
+
 
 
 export default class App extends Component{

@@ -13,17 +13,17 @@ export function Forecast() {
                         {/* header */}
                             <Row className="d-flex justify-content-between">
                                 <Col>
-                                    <h4>{selectedCity.Country.LocalizedName}</h4>
+                                    <h4>{selectedCity.Country.LocalizedName} - {selectedCity.LocalizedName}</h4>
                                 </Col>
                                 <Col className="d-flex justify-content-end">
-                                    <Button >Add To Favorites</Button>
+                                    <Button className="text-size-0">Add Favorite</Button>
                                 </Col>
                             </Row>
                         </Col>
                 </Row>
 
                 {/* today forecast */}
-                <Row>
+                <Row className="d-flex justify-content-center">
                     <Forecast1Day />
                 </Row>
 

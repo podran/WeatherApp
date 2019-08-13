@@ -1,6 +1,7 @@
 import React from 'react'
 import { Row, Col, Image } from 'react-bootstrap';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
+import ReactTooltip from 'react-tooltip';
 
 let days = ['Sunday', 'Monday', 'Tuesday', 'Wednsday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -10,15 +11,23 @@ export default function Forecast5Days(props) {
             days: state.search.fiveDayForecast.DailyForecasts
         }
     });
+    let degSign = `\xB0F`;
     return (
-        <Col className="d-flex justify-content-center">
-            {forecast.days.map((forecast) => {
+        <Col className="d-flex justify-content-sm-around col-12">
+            {forecast.days.map((forecast, i) => {
                 return (
-                    <div className="text-center small mw-25">
-                        <h3>{days[new Date(forecast.Date).getDay()]}</h3>
-                        <Image src={require(`../icons/${forecast.Day.Icon}.png`)} />
+                    <div className="text-center small" key={i}>
+                        <h3 className="text-size-1">{days[new Date(forecast.Date).getDay()]}</h3>
+                        <div className="forecast-image">
+                            <Image data-tip data-for={`${i}`} src={require(`../icons/${forecast.Day.Icon}.png`)} className="mw-100"/>
+                            <ReactTooltip id={`${i}`} type="light">
+                                <span>
+                                    {forecast.Temperature.Minimum.Value}{degSign} - 
+                                    {forecast.Temperature.Maximum.Value}{degSign}
+                                </span>
+                            </ReactTooltip>
+                        </div>
                     </div>
-                       
                 )
             })}
         </Col>

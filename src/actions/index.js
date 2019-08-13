@@ -19,21 +19,20 @@ export const changePath = (path) => {
     }
 }
 
-export const search = (response) => {
+export const oneDayForecast = (response) => {
     return {
-        type: 'search',
-        city: response.city,
-        oneDayForecast: response.oneDayForcast,
-        fiveDayForecast: response.fiveDayForecast
+        type: 'oneDay',
+        oneDayForecast: response
     }
 }
 
-export const searchResults = (results) => {
+export const fiveDayForecast = (response) => {
     return {
-        type: 'menu',
-        searchResults: results
+        type: 'fiveDay',
+        fiveDayForecast: response
     }
 }
+
 
 export const selectedResult = (selectedResult) => {
     return {

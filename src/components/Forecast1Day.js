@@ -22,18 +22,18 @@ function Forecast1Day(props) {
     });
 
     let forecast = {
-        forcastText: state.oneDayForecast[0].WeatherText,
-        forcastIcon: state.oneDayForecast[0].WeatherIcon,
-        celcTemp: state.oneDayForecast[0].Temperature.Metric.Value,
-        ferTemp: state.oneDayForecast[0].Temperature.Imperial.Value,
+        forcastText: state.oneDayForecast[0].WeatherText || 'wait',
+        forcastIcon: state.oneDayForecast[0].WeatherIcon || 'wait',
+        celcTemp: state.oneDayForecast[0].Temperature.Metric.Value || 'wait',
+        ferTemp: state.oneDayForecast[0].Temperature.Imperial.Value || 'wait',
     }
 
     return (
-        <Col className="d-flex justify-content-center mb-5">
+        <Col className="bg-light d-flex justify-content-center mb-5 mt-2" xs={6}>
             <div className="mw-75 text-info text-center">
                     <h3>{forecast.forcastText}</h3>
                     <h4>{temp === forecast.ferTemp ? temp = forecast.celcTemp : temp = forecast.ferTemp} {degSign === `\xB0F` ? degSign = `\xB0C` : degSign = `\xB0F`}</h4>
-                <Button size="sm" variant="outline-info" onClick={forceUpdate}>Units</Button>
+                <Button className="text-size-0" size="sm" variant="outline-info" onClick={forceUpdate}>Units</Button>
                 <img
                     className="d-block w-100"
                     src={require(`../icons/${forecast.forcastIcon}.png`)}

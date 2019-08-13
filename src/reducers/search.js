@@ -215,16 +215,19 @@ const oneDayForecast = JSON.parse(`[
 
 const searchReducer = (state = {
     oneDayForecast: oneDayForecast,
-    fiveDayForecast: fiveDayForecast,
-    city: defaultCity
+    fiveDayForecast: fiveDayForecast
 }, action) => {
     switch(action.type){
-        case 'search':
+        case 'oneDay':
             return {
                 oneDayForecast: action.oneDayForecast,
-                fiveDayForecast: action.fiveDayForecast,
-                city: action.city
+                fiveDayForecast: state.fiveDayForecast
             }
+        case 'fiveDay':
+          return {
+              oneDayForecast: state.oneDayForecast,
+              fiveDayForecast: action.fiveDayForecast
+          }
         default: return state;
     }
 }

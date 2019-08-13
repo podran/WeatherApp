@@ -5,30 +5,34 @@ import Forecast1Day from './Forecast1Day';
 import Forecast5Days from './Forecast5Days';
 
 export function Forecast() {
-        const city=useSelector(state => state.search.oneDayForcast);
+        const selectedCity = useSelector(state => state.result.selectedResult);
         return (
-            <Row className="d-flex justify-content-center">
-                <Col xs={12} md={6}>
-                    {/* header */}
-                    <Row className="d-flex justify-content-between">
-                        <Col>
-                            default City
+            <div>
+                <Row className="d-flex justify-content-center">
+                    <Col xs={12} md={6}>
+                        {/* header */}
+                            <Row className="d-flex justify-content-between">
+                                <Col>
+                                    <h4>{selectedCity.Country.LocalizedName}</h4>
+                                </Col>
+                                <Col className="d-flex justify-content-end">
+                                    <Button >Add To Favorites</Button>
+                                </Col>
+                            </Row>
                         </Col>
-                        <Col className="d-flex justify-content-end">
-                            <Button >Add To Favorites</Button>
-                        </Col>
-                    </Row>
+                </Row>
 
-                    {/* today forecast */}
-                    <Row>
-                        <Forecast1Day />
-                    </Row>
+                {/* today forecast */}
+                <Row>
+                    <Forecast1Day />
+                </Row>
 
+                {/* 5 days forecast */}
+                <Row>
+                    <Forecast5Days />
+                </Row>
+            </div>
 
-                    {/* 5 days forecast */}
-                        <Forecast5Days />
-                </Col>
-            </Row>
         )
 }
 

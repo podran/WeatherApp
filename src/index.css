@@ -1,6 +1,7 @@
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 body {
+  text-size-adjust: 50%;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",

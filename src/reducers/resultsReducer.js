@@ -151,17 +151,27 @@ const defaultResults = JSON.parse(`[
     }
   ]`);
 
+  let temp = JSON.parse(`{
+    "Version": 1,
+    "Key": "60838",
+    "Type": "City",
+    "Rank": 13,
+    "LocalizedName": "Linfen",
+    "Country": {
+      "ID": "CN",
+      "LocalizedName": "China"
+    },
+    "AdministrativeArea": {
+      "ID": "SX",
+      "LocalizedName": "Shanxi"
+    }
+  }`);
 
 
 const resultsReducer = (state = {
-    results: defaultResults,
-    selectedResult: null
+    selectedResult: temp
 }, action) => {
     switch(action.type){
-        case 'menu':
-            return {
-                results: action.results
-            }
         case 'selected':
             return {
                 selectedResult: action.selectedResult

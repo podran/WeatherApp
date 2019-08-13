@@ -1,38 +1,26 @@
-import React, { Component } from 'react'
-import Forecast1Day from './Forecast1Day';
-import { Row, Col } from 'react-bootstrap';
+import React from 'react'
+import { Row, Col, Image } from 'react-bootstrap';
 import { useSelector } from 'react-redux'
 
+let days = ['Sunday', 'Monday', 'Tuesday', 'Wednsday', 'Thursday', 'Friday', 'Saturday'];
 
 export default function Forecast5Days(props) {
-    const fiveDayForecast = useSelector(state => state.fiveDayForecast);
+    const forecast = useSelector(state => {
+        return {
+            days: state.search.fiveDayForecast.DailyForecasts
+        }
+    });
     return (
-        <Row>
-            <Col>
-                <div>
-                    text
-                </div>
-            </Col>
-            <Col>
-                <div>
-                    text
-                </div>
-            </Col>
-            <Col>
-                <div>
-                    text
-                </div>
-            </Col>
-            <Col>
-                <div>
-                    text
-                </div>
-            </Col>
-            <Col>
-                <div>
-                    text
-                </div>
-            </Col>
-        </Row>
+        <Col className="d-flex justify-content-center">
+            {forecast.days.map((forecast) => {
+                return (
+                    <div className="text-center small mw-25">
+                        <h3>{days[new Date(forecast.Date).getDay()]}</h3>
+                        <Image src={require(`../icons/${forecast.Day.Icon}.png`)} />
+                    </div>
+                       
+                )
+            })}
+        </Col>
     )
 }

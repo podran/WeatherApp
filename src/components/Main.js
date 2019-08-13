@@ -8,8 +8,7 @@ export class Main extends Component {
             // Search Field
                 <Container fluid={true}>
                     <Search />
-                    {/* Weather Cast */}
-                    <Forecast />
+                    <Forecast className="forecast-page"/>
                 </Container>
                 )
             }

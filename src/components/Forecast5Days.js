@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Image } from 'react-bootstrap';
+import { Col, Image } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import ReactTooltip from 'react-tooltip';
 

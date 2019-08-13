@@ -1,20 +1,3 @@
-const defaultCity = JSON.parse(`[
-    {
-      "Version": 1,
-      "Key": "215854",
-      "Type": "City",
-      "Rank": 31,
-      "LocalizedName": "Tel Aviv",
-      "Country": {
-        "ID": "IL",
-        "LocalizedName": "Israel"
-      },
-      "AdministrativeArea": {
-        "ID": "TA",
-        "LocalizedName": "Tel Aviv"
-      }
-    }]`);
-
 const oneDayForecast = JSON.parse(`[
   {
     "LocalObservationDateTime": "2019-08-13T04:11:00+03:00",

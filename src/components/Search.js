@@ -3,57 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 import AsyncSelect  from 'react-select/async';
 import { selectedResult, oneDayForecast, fiveDayForecast } from '../actions';
 import { useDispatch } from 'react-redux';
-const axios = require('axios');
-const API='be9SnLSTir8OGl4fmPVSfli1KakCeeUq';
-
-const filterResults = (results) => {
-    let newResults;
-     if (results) {
-         newResults = results.map(result => {
-             return {
-                 ...result,
-                 label: `${result.Country.ID} - ${result.LocalizedName}`,
-                 value: `${result.Country.ID} - ${result.LocalizedName}`
-             }
-         });
-         return newResults;
-     }
-}
-
-const promiseOptions = (inputValue, cb) => {
-    axios({
-        method: 'get',
-        url: 'http://dataservice.accuweather.com/locations/v1/cities/autocomplete',
-        params: {
-            apikey : API,
-            q: inputValue.replace(/[^A-Za-z]/ig, '')
-        }
-      })
-      .then((results) => {
-        cb(filterResults(results.data));
-      })
-      .catch(err => console.log(err));
-}
-
-const getForecast = (key) => {
-    return axios({
-        method: 'get',
-        url: `http://dataservice.accuweather.com/currentconditions/v1/${key}`,
-        params: {
-            apikey : API
-        }
-      });
-}
-
-const getFiveDayForecast = (key) => {
-    return axios({
-        method: 'get',
-        url: `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${key}`,
-        params: {
-            apikey : API
-        }
-      });
-}
+import {getFiveDayForecast, getForecast, promiseOptions} from '../getMethods';
 
 export default function Search() {
         // const [, updateState] = React.useState();

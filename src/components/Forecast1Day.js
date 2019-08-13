@@ -8,8 +8,8 @@ function useForceUpdate(){
     return () => set(!value); // toggle the state to force render
 }
 
-let temp;
 let degSign;
+let temp;
 
 function Forecast1Day(props) {
     const forceUpdate = useForceUpdate();
@@ -22,21 +22,29 @@ function Forecast1Day(props) {
     });
 
     let forecast = {
-        forcastText: state.oneDayForecast[0].WeatherText || 'wait',
-        forcastIcon: state.oneDayForecast[0].WeatherIcon || 'wait',
-        celcTemp: state.oneDayForecast[0].Temperature.Metric.Value || 'wait',
-        ferTemp: state.oneDayForecast[0].Temperature.Imperial.Value || 'wait',
+        forcastText: state.oneDayForecast[0].WeatherText,
+        forcastIcon: state.oneDayForecast[0].WeatherIcon,
+        celcTemp: state.oneDayForecast[0].Temperature.Metric.Value,
+        ferTemp:  state.oneDayForecast[0].Temperature.Imperial.Value
     }
+
+    let img =  forecast.forcastIcon ? require(`../icons/${forecast.forcastIcon}.png`) : require(`../icons/wait.ico`);
+
+    temp = temp === forecast.ferTemp ? forecast.celcTemp : forecast.ferTemp;
+    degSign = degSign === `\xB0F` ?  `\xB0C` : `\xB0F`;
+   
 
     return (
         <Col className="bg-light d-flex justify-content-center mb-5 mt-2" xs={6}>
             <div className="mw-75 text-info text-center">
                     <h3>{forecast.forcastText}</h3>
-                    <h4>{temp === forecast.ferTemp ? temp = forecast.celcTemp : temp = forecast.ferTemp} {degSign === `\xB0F` ? degSign = `\xB0C` : degSign = `\xB0F`}</h4>
-                <Button className="text-size-0" size="sm" variant="outline-info" onClick={forceUpdate}>Units</Button>
+                    <h4>{temp} {degSign}</h4>
+                <Button className="text-size-0" size="sm" variant="outline-info" onClick={() => {
+                    forceUpdate();
+                }}>Units</Button>
                 <img
                     className="d-block w-100"
-                    src={require(`../icons/${forecast.forcastIcon}.png`)}
+                    src={img}
                     alt="Current Forecast"
                 />
             </div>

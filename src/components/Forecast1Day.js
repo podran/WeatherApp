@@ -8,8 +8,7 @@ function useForceUpdate(){
     return () => set(!value); // toggle the state to force render
 }
 
-let degSign;
-let temp;
+let degSign =`\xB0C`;
 
 function Forecast1Day(props) {
     const forceUpdate = useForceUpdate();
@@ -30,16 +29,13 @@ function Forecast1Day(props) {
 
     let img =  forecast.forcastIcon ? require(`../icons/${forecast.forcastIcon}.png`) : require(`../icons/wait.ico`);
 
-    temp = temp === forecast.ferTemp ? forecast.celcTemp : forecast.ferTemp;
-    degSign = degSign === `\xB0F` ?  `\xB0C` : `\xB0F`;
-   
-
     return (
         <Col className="bg-light d-flex justify-content-center mb-5 mt-2" xs={6}>
             <div className="mw-75 text-info text-center">
                     <h3>{forecast.forcastText}</h3>
-                    <h4>{temp} {degSign}</h4>
+                    <h4>{degSign === `\xB0C` ? forecast.celcTemp : forecast.ferTemp} {degSign}</h4>
                 <Button className="text-size-0" size="sm" variant="outline-info" onClick={() => {
+                    degSign = degSign === `\xB0F` ?  `\xB0C` : `\xB0F`;
                     forceUpdate();
                 }}>Units</Button>
                 <img

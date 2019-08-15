@@ -8,15 +8,11 @@ import { getFiveDayForecast, getForecast } from './getMethods';
 import { useSelector, useDispatch } from 'react-redux';
 import {  oneDayForecast, fiveDayForecast } from './actions';
 
-
 //create your forceUpdate hook
 function useForceUpdate(){
   const [value, set] = useState(true); //boolean state
   return () => set(!value); // toggle the state to force render
 }
-
-
-
 
 export default function App() {
   const dispatch = useDispatch();

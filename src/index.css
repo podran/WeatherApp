@@ -14,10 +14,6 @@ code {
     monospace;
 }
 
-.resultItem{
-  color: red;
-}
-
 .results {
   position: absolute;
   max-height: 150px;

@@ -14,21 +14,22 @@ export default function Search() {
                 <Row className="d-flex justify-content-center">
                     <Col xs={12} md={6} xl={4} className="my-5">
                         <div>
+
                             <AsyncSelect loadOptions={promiseOptions} onChange={(result) => {
                                 dispatch(selectedResult(result));
-
                                 getForecast(result.Key)
                                 .then(oneDay => {
-                                    if(oneDay) dispatch(oneDayForecast(oneDay.data));
+                                    dispatch(oneDayForecast(oneDay.data));
                                 })
                                 .catch(err => console.log(err));
                                 
                                 getFiveDayForecast(result.Key)
                                 .then(fiveDay => {
-                                    if(fiveDay) dispatch(fiveDayForecast(fiveDay.data));
+                                     dispatch(fiveDayForecast(fiveDay.data));
                                 })
                                 .catch(err => console.log(err));
                             }}/>
+
                         </div>
                     </Col>
                 </Row>

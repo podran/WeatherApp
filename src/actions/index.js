@@ -1,3 +1,5 @@
+
+
 export const addFav = (city) => {
     return {
         type: 'Add',
@@ -40,3 +42,44 @@ export const selectedResult = (selectedResult) => {
         selectedResult
     }
 }
+
+export const async = (wait) => {
+    return {
+        type: 'async',
+        wait
+    }
+}
+
+export const favWeather = (weather) => {
+    return {
+        type: 'addFavWeather',
+        weather
+    }
+}
+
+export const getCurrentWeather = (favorites) => {
+    return {
+        type :'putWeather',
+        favorites
+    }
+}
+
+
+// export const getCurrentWeather = () => (dispatch, getState) => {
+//     try{
+//         var map = [];
+//         getState().favorites.map( async fav => {
+//             await getForecast(fav.city.Key)
+//             .then(forcast => {
+//                 map.push(forcast);
+//             });
+//         });
+//         console.log(map);
+//         dispatch({
+//             type: 'putWeather',
+//             currentFavWeather: map
+//         })
+//     }catch(e){
+
+//     }
+// }

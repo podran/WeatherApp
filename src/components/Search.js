@@ -6,8 +6,6 @@ import { useDispatch } from 'react-redux';
 import {getFiveDayForecast, getForecast, promiseOptions} from '../getMethods';
 
 export default function Search() {
-        // const [, updateState] = React.useState();
-        // const forceUpdate = React.useCallback(() => updateState({}), []);
         const dispatch = useDispatch();
         return (
             <div>

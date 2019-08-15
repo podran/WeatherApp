@@ -8,7 +8,7 @@ const allReducers = combineReducers({
     favorites: favReducer,
     path: pathReducer,
     search: searchReducer,
-    result: resultsReducer
+    result: resultsReducer,
 });
 
 export default allReducers;

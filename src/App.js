@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Header from './components/Header';
 import Main from './components/Main';
 import { Router, Route } from "react-router-dom";
@@ -8,15 +8,6 @@ import { getFiveDayForecast, getForecast } from './getMethods';
 import { useSelector, useDispatch } from 'react-redux';
 import {  oneDayForecast, fiveDayForecast } from './actions';
 
-<<<<<<< HEAD
-=======
-//create your forceUpdate hook
-function useForceUpdate(){
-  const [value, set] = useState(true); //boolean state
-  return () => set(!value); // toggle the state to force render
-}
-
->>>>>>> 015d64c66b0812afcae3c1ea02485414764eb41b
 export default function App() {
   const dispatch = useDispatch();
   const selectedCity = useSelector(state => state.result.selectedResult);

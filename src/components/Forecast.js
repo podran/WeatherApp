@@ -1,12 +1,18 @@
 import React from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import {addFav, removeFav, getCurrentWeather} from '../actions'
 import Forecast1Day from './Forecast1Day';
 import Forecast5Days from './Forecast5Days';
 
 
-export function Forecast() {
+function Forecast() {
+    const dispatch = useDispatch();
     const selectedCity = useSelector(state => state.result.selectedResult);
+    const favorites = useSelector(state => state.favorites);
+    let favoritesText,isFav;
+    isFav = favorites.findIndex(city => city.Key === selectedCity.Key);
+    isFav !== -1 ? favoritesText = 'Remove' : favoritesText = 'Add';
     return (
         <div>
             <Row className="d-flex justify-content-center">
@@ -17,7 +23,9 @@ export function Forecast() {
                                 <h4>{selectedCity.Country.LocalizedName} - {selectedCity.LocalizedName}</h4>
                             </Col>
                             <Col className="d-flex justify-content-end">
-                                <Button className="text-size-0">Add Favorite</Button>
+                                <Button variant="outline-secondary" className="text-size-0" onClick={() => {
+                                    isFav !== -1 ? dispatch(removeFav(selectedCity)) : dispatch(addFav(selectedCity));
+                                }}>{favoritesText}</Button>
                             </Col>
                         </Row>
                     </Col>

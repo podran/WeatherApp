@@ -45,8 +45,18 @@ export const promiseOptions = (inputValue, cb) => {
         }
       })
       .then((results) => {
-          console.log(results.data);
         cb(filterResults(results.data));
       })
       .catch(err => console.log(err));
+}
+
+
+export const locationQuery = (key) => {
+    return axios({
+        method: 'get',
+        url: `http://dataservice.accuweather.com/locations/v1/${key}`,
+        params: {
+            apikey : API
+        }
+      });
 }

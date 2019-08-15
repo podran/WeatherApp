@@ -1,19 +1,22 @@
-const favReducer = (state = [], action) => {
+const favReducer = (state = [] , action) => {
     switch(action.type){
         case 'Add':
-            if(state.containts(action.city)) return [...state];
+
+            if(state.includes(action.city)) return state;
             return [
                 ...state,
-                action.city
-            ]
+                 action.city
+                ]
         case 'Remove':
-            return [
-                ...state.filter(city => city !== action.city),
-            ];
-        default: return [
-            ...state
-        ];
+                console.log(state);
+                console.log(action);
+            return [...state.filter( item=> item !== action.city )]
+        default: return state
     }
 }
 
+
+
+
 export default favReducer;
+

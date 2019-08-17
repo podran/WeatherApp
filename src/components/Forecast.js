@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
-import {addFav, removeFav, getCurrentWeather} from '../actions'
+import {addFav, removeFav} from '../actions';
 import Forecast1Day from './Forecast1Day';
 import Forecast5Days from './Forecast5Days';
 

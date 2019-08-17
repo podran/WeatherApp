@@ -56,30 +56,3 @@ export const favWeather = (weather) => {
         weather
     }
 }
-
-export const getCurrentWeather = (favorites) => {
-    return {
-        type :'putWeather',
-        favorites
-    }
-}
-
-
-// export const getCurrentWeather = () => (dispatch, getState) => {
-//     try{
-//         var map = [];
-//         getState().favorites.map( async fav => {
-//             await getForecast(fav.city.Key)
-//             .then(forcast => {
-//                 map.push(forcast);
-//             });
-//         });
-//         console.log(map);
-//         dispatch({
-//             type: 'putWeather',
-//             currentFavWeather: map
-//         })
-//     }catch(e){
-
-//     }
-// }

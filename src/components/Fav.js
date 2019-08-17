@@ -1,41 +1,40 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import {locationQuery} from '../getMethods';
 import history from './history';
+import { selectedResult } from '../actions';
+import ReactTooltip from 'react-tooltip';
 
 export default function Fav() {
     const favorites = useSelector(state => state.favorites);
+    const dispatch = useDispatch();
+    let degSign = `\xB0C`;
+
     return (
         <Container>
-            <Row>
-
-            </Row>
-
-
-
-            {
-                favorites.map((item, i) => {
-                    return (
-                        <Col key={i} >
-                            <Link to="/" data-id={item.Key} onClick={(e) => {
-                                locationQuery(item.Key)
-                                history.push('/');
-                            }}>
-                                <Card className="favorite d-flex justify-content-between">
-                                    <Card.Title>{item.Country.LocalizedName} {item.LocalizedName}</Card.Title>
+            <Row className="d-flex justify-content-around mt-5">
+                {
+                    favorites.map((item, i) => {
+                        return (
+                            <Col key={i} xs={2}>
+                                <Card className="text-center">
+                                    <Card.Title>{item.selectedCity.Country.LocalizedName} {item.selectedCity.LocalizedName}</Card.Title>
+                                    <Link to="/" data-id={item.Key} onClick={(e) => {
+                                        dispatch(selectedResult(favorites.find(city => city.Key === item.Key).selectedCity));
+                                        history.push('/');
+                                    }}>
+                                        <Card.Img data-tip data-for={`${i}`} src={require(`../icons/${item.currentWeather.WeatherIcon}.png`)} />
+                                        <ReactTooltip id={`${i}`} type="light">
+                                            {item.currentWeather.Temperature.Metric.Value} {degSign}
+                                        </ReactTooltip>
+                                    </Link>
                                 </Card>
-                            </Link>
-                            
-                        </Col>
-                    )
-                })
-            }
-
-
-
-
+                            </Col>
+                        );
+                    })
+                }
+            </Row>
         </Container>
     )
 }

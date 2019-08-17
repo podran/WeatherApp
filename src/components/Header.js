@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
-import history from './history'
+import history from './history';
 
 
 export class Header extends Component {
     render() {
         return (
-            <Header>
                 <Navbar bg="dark" variant="dark" collapseOnSelect expand="sm">
                     <Navbar.Brand className="mr-auto">Herolo Weather Task</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -21,7 +20,6 @@ export class Header extends Component {
                         </Navbar.Collapse>
                     </Nav>
                 </Navbar>
-            </Header>
         )
     }
 }

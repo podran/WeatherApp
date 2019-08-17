@@ -11,7 +11,8 @@ function Forecast() {
     const selectedCity = useSelector(state => state.result.selectedResult);
     const favorites = useSelector(state => state.favorites);
     let favoritesText,isFav;
-    isFav = favorites.findIndex(city => city.Key === selectedCity.Key);
+    const currentWeather = useSelector(state => state.search.oneDayForecast[0])
+    isFav = favorites.findIndex(city => city.selectedCity.Key === selectedCity.Key);
     isFav !== -1 ? favoritesText = 'Remove' : favoritesText = 'Add';
     return (
         <div>
@@ -24,7 +25,14 @@ function Forecast() {
                             </Col>
                             <Col className="d-flex justify-content-end">
                                 <Button variant="outline-secondary" className="text-size-0" onClick={() => {
-                                    isFav !== -1 ? dispatch(removeFav(selectedCity)) : dispatch(addFav(selectedCity));
+                                    isFav !== -1 ? dispatch(removeFav({
+                                        selectedCity,
+                                        currentWeather
+                                    })) 
+                                    : dispatch(addFav({
+                                        selectedCity,
+                                        currentWeather
+                                    }));
                                 }}>{favoritesText}</Button>
                             </Col>
                         </Row>

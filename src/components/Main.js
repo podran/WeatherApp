@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {  Container } from 'react-bootstrap';
 import Search from './Search';
 import Forecast from './Forecast';
-export class Main extends Component {
+class Main extends Component {
     render() {
         return (
             // Search Field

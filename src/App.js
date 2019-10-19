@@ -1,36 +1,52 @@
-import React from 'react';
 import Header from './components/Header';
 import Main from './components/Main';
-import { Router, Route } from "react-router-dom";
+import { BrowserRouter as Router,  Route } from "react-router-dom";
 import Fav from './components/Fav';
-import history from './components/history';
 import { getFiveDayForecast, getForecast } from './getMethods';
-import { useSelector, useDispatch } from 'react-redux';
-import {  oneDayForecast, fiveDayForecast } from './actions';
+import { connect } from 'react-redux';
+import { oneDayForecast, fiveDayForecast } from './actions';
+import React, { Component } from 'react'
 
-export default function App() {
-  const dispatch = useDispatch();
-  const selectedCity = useSelector(state => state.result.selectedResult);
-  
-  getForecast(selectedCity.Key)
-  .then(oneDay => {
-    dispatch(oneDayForecast(oneDay.data));
-  })
-  .catch(err => console.log(err));
+class App extends Component {
 
-getFiveDayForecast(selectedCity.Key)
-  .then(fiveDay => {
-    dispatch(fiveDayForecast(fiveDay.data));
-  })
-  .catch(err => console.log(err));
+  componentWillMount() {
+    getForecast(215854)
+      .then(oneDay => {
+       this.props.oneDayForecast(oneDay.data);
+      })
+      .catch(err => console.log(err));
 
-  return (
-    <Router history={history}>
-      <div className="App">
-        <Header />
-        <Route exact path="/" component={Main} />
-        <Route path="/fav" component={Fav} />
+    getFiveDayForecast(215854)
+      .then(fiveDay => {
+       this.props.fiveDayForecast(fiveDay.data);
+      })
+      .catch(err => console.log(err));
+  }
+
+  render() {
+    return (
+      <div>
+        <Router>
+          <div className="App">
+            <Header />
+            <Route exact path="/" component={Main} />
+            <Route path="/fav" component={Fav} />
+          </div>
+        </Router>
       </div>
-    </Router>
-  );
+    )
+  }
 }
+
+
+const mapStateToProps = (state) => {
+  return {
+    defaultCity: state.selectedResult
+  }
+}
+const mapDispatchToProps = {
+  oneDayForecast,
+  fiveDayForecast
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

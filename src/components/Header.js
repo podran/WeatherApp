@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
-import history from './history';
+import { Link } from "react-router-dom";
 
 
-export class Header extends Component {
+class Header extends Component {
     render() {
         return (
-                <Navbar bg="dark" variant="dark" collapseOnSelect expand="sm">
-                    <Navbar.Brand className="mr-auto">Herolo Weather Task</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <Nav variant="pills" defaultActiveKey="link-1">
-                        <Navbar.Collapse id="responsive-navbar-nav">
-                            <Nav.Item>
-                                <Nav.Link eventKey="link-1" onClick={() => history.push('/')}>HomePage</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link eventKey="link-2" onClick={() => history.push('/fav')}>Favorites</Nav.Link>
-                            </Nav.Item>
-                        </Navbar.Collapse>
+            <Navbar bg="dark" variant="dark" collapseOnSelect expand="sm">
+                <Nav>
+                    <Navbar.Brand >Herolo Weather Task</Navbar.Brand>
+                </Nav>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse className="justify-content-end">
+                    <Nav variant="pills" defaultActiveKey="link-1" id="responsive-navbar-nav">
+                        <Nav.Item>
+                           <Link to={'/'}>HomePage</Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Link to={'/fav'}>Favorites</Link>
+                        </Nav.Item>
                     </Nav>
-                </Navbar>
+                </Navbar.Collapse>
+            </Navbar>
         )
     }
 }

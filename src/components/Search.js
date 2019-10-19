@@ -24,15 +24,13 @@ export class Search extends Component {
     
     render() {
         return (
-            <div>
-                <Row className="d-flex justify-content-center">
+                <Row className="d-flex justify-content-center w-100">
                     <Col xs={12} md={6} xl={4} className="my-5">
                         <div>
                             <AsyncSelect loadOptions={promiseOptions} onChange={this.searchChangeHandler.bind(this)} />
                         </div>
                     </Col>
                 </Row>
-            </div>
         )
     }
 }

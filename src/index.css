@@ -9,11 +9,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
 .results {
   position: absolute;
   max-height: 150px;
@@ -41,4 +36,12 @@ code {
 .nav-item {
   padding-right: 10px;
 }
-/* .forecast-image:hover */
+/* 
+#main {
+}
+
+#forecast5day {
+  align-items: center;
+  padding: 0px;
+} */
+

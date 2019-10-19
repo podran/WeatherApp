@@ -15,7 +15,7 @@ class Forecast5Days extends Component {
     }
     render() {
         return (
-            <Col className="d-flex justify-content-sm-around col-12">
+            <Col className="d-flex justify-content-sm-around col-12" id="forecast5day">
                 {this.props.DailyForecasts ? this.props.DailyForecasts.map((forecast, i) => {
                     return (
                         <div className="text-center small" key={i}>

@@ -6,8 +6,8 @@ class Main extends Component {
     render() {
         return (
             // Search Field
-                <Container fluid={true} className="d-flex justify-content-center ">
-                    <div className="col-md-8 border border-primary mt-3 p-3">
+                <Container fluid={true} className="d-flex justify-content-center">
+                    <div className="col-md-8 border border-primary mt-3 p-3 d-flex flex-column align-items-center"  id="main">
                         <Search />
                         <Forecast className="forecast-page"/>
                     </div>

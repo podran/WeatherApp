@@ -14,13 +14,6 @@ export const removeFav = (city) => {
     }
 }
 
-export const changePath = (path) => {
-    return {
-        type: 'ChangePath',
-        path
-    }
-}
-
 export const oneDayForecast = (response) => {
     return {
         type: 'oneDay',
@@ -40,13 +33,6 @@ export const selectedResult = (selectedResult) => {
     return {
         type: 'selected',
         selectedResult
-    }
-}
-
-export const async = (wait) => {
-    return {
-        type: 'async',
-        wait
     }
 }
 

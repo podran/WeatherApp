@@ -11,7 +11,6 @@ class Forecast extends Component {
         return this.props.favorites.includes(this.props.selectedCity);
     }
 
-
     favoriteClickHandler() {
         const data = this.props.selectedCity;
 
@@ -22,6 +21,7 @@ class Forecast extends Component {
             this.props.addFav(data);
         }
     }
+
     render() {
         return (
             <div>
